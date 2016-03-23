@@ -29,6 +29,10 @@ RUN chmod 755 /*.sh
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
 ADD sample/ /app
 
-EXPOSE 80
+
+# Add volumes for MySQL
+VOLUME  ["/app"]
+
+EXPOSE 80 3306 22
 WORKDIR /app
 CMD ["/run.sh"]
